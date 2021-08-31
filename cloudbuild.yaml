@@ -8,7 +8,7 @@ steps:
   entrypoint: "sh"
   args:
     - '-c'
-    - 'npm run test'
+    - 'pwd && npm run test'
 
 # # fetch GKE cluster credentials to be used for helm step
 - name: 'gcr.io/cloud-builders/kubectl'
