@@ -1,12 +1,12 @@
 steps:
-- name: node
+- name: node:16-alpine
   entrypoint: npm
   args: ['install']
 
 # run tests
-- name: node
+- name: node:16-alpine
   entrypoint: npm
-  args: ['test']
+  args: ['run', 'test']
 
 # build and push the docker image
 - name: 'gcr.io/cloud-builders/docker'
