@@ -28,7 +28,7 @@ steps:
   args:
   - '-c'
   - |
-    [[ "$BRANCH_NAME" == "master" ]] && /builder/helm.bash upgrade --install realworld --namespace realworld --create-namespacecharts/realworld --set image.repository=gcr.io/$PROJECT_ID/realworld --set image.tag=$SHORT_SHA || echo "skipping..."
+    [[ "$BRANCH_NAME" == "master" ]] && /builder/helm.bash upgrade --install realworld --namespace realworld --create-namespace charts/realworld --set image.repository=gcr.io/$PROJECT_ID/realworld --set image.tag=$SHORT_SHA || echo "skipping..."
   env:
   - 'DEBUG=true'
   - 'KUBECONFIG=/workspace/.kube/config'
