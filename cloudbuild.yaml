@@ -5,7 +5,7 @@ steps:
 
 # run tests
 - name: 'gcr.io/$PROJECT_ID/realworld:$SHORT_SHA'
-  entrypoint: bash
+  entrypoint: sh
   args:
   - '-c'
   - 'ls -lha; ls -lha workspace'
