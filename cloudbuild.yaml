@@ -5,10 +5,10 @@ steps:
 
 # run tests
 - name: 'gcr.io/$PROJECT_ID/realworld:$SHORT_SHA'
-  entrypoint: sh
+  entrypoint: npm
   args:
-  - '-c'
-  - 'ls -lha; ls -lha workspace'
+  - 'run'
+  - 'test'
 
 # # fetch GKE cluster credentials to be used for helm step
 - name: 'gcr.io/cloud-builders/kubectl'
