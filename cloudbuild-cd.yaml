@@ -4,6 +4,7 @@ steps:
   args: ['install']
 
 # run tests
+# TODO: The tests seems to require database access, look into adding a fake db to the pipeline.
 # - name: node:16-alpine
 #   entrypoint: npm
 #   args: ['run', 'test']
