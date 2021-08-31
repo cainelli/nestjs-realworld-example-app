@@ -1,14 +1,16 @@
 steps:
+- name: node
+  entrypoint: npm
+  args: ['install']
+
+# run tests
+- name: node
+  entrypoint: npm
+  args: ['test']
+
 # build and push the docker image
 - name: 'gcr.io/cloud-builders/docker'
   args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/realworld:$SHORT_SHA', '.' ]
-
-# run tests
-- name: 'gcr.io/$PROJECT_ID/realworld:$SHORT_SHA'
-  entrypoint: sh
-  args:
-  - '-c'
-  - 'ls -lha; ls -lha node_modules'
 
 # # fetch GKE cluster credentials to be used for helm step
 - name: 'gcr.io/cloud-builders/kubectl'
