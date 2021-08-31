@@ -5,9 +5,10 @@ steps:
 
 # run tests
 - name: 'gcr.io/$PROJECT_ID/realworld:$SHORT_SHA'
+  entrypoint: bash
   args:
-    - 'run'
-    - 'test'
+  - '-c'
+  - 'ls -lha; ls -lha workspace'
 
 # # fetch GKE cluster credentials to be used for helm step
 - name: 'gcr.io/cloud-builders/kubectl'
@@ -24,7 +25,7 @@ steps:
   args:
   - '-c'
   - |
-    [[ "$BRANCH_NAME" == "master" ]] && /builder/kubectl.bash upgrade --install realworld --namespace realworld --create-namespacecharts/realworld --set image.repository=gcr.io/$PROJECT_ID/realworld --set image.tag=$SHORT_SHA || echo "skipping..."
+    [[ "$BRANCH_NAME" == "master" ]] && /builder/helm.bash upgrade --install realworld --namespace realworld --create-namespacecharts/realworld --set image.repository=gcr.io/$PROJECT_ID/realworld --set image.tag=$SHORT_SHA || echo "skipping..."
   env:
   - 'DEBUG=true'
   - 'KUBECONFIG=/workspace/.kube/config'
