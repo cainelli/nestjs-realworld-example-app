@@ -11,12 +11,12 @@ steps:
     - 'npm run test'
 
 # # fetch GKE cluster credentials to be used for helm step
-# - name: 'gcr.io/cloud-builders/kubectl'
-#   env:
-#   - 'CLOUDSDK_COMPUTE_ZONE=europe-west3'
-#   - 'CLOUDSDK_CONTAINER_CLUSTER=k8s-cainelli-dev'
-#   - 'KUBECONFIG=/workspace/.kube/config'
-#   args: ['cluster-info']
+- name: 'gcr.io/cloud-builders/kubectl'
+  env:
+  - 'CLOUDSDK_COMPUTE_ZONE=europe-west3'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=k8s-cainelli-dev'
+  - 'KUBECONFIG=/workspace/.kube/config'
+  args: ['cluster-info']
 
 # run helm command to install/upgrade realworld
 # https://github.com/GoogleCloudPlatform/cloud-builders-community/tree/master/helm
