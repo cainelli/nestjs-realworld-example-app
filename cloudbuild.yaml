@@ -5,10 +5,10 @@ steps:
 
 # run tests
 - name: 'gcr.io/$PROJECT_ID/realworld:$SHORT_SHA'
-  entrypoint: "npm"
+  entrypoint: "bash"
   args:
-    - "run"
-    - "test"
+    - '-c'
+    - 'npm run test'
 
 # # fetch GKE cluster credentials to be used for helm step
 # - name: 'gcr.io/cloud-builders/kubectl'
@@ -19,6 +19,7 @@ steps:
 #   args: ['cluster-info']
 
 # run helm command to install/upgrade realworld
+# https://github.com/GoogleCloudPlatform/cloud-builders-community/tree/master/helm
 - name: 'gcr.io/$PROJECT_ID/helm'
   entrypoint: bash
   args:
